@@ -1,5 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
+import { TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
@@ -22,7 +24,24 @@ export default function AppNavigator() {
         }}
       />
       <Stack.Screen name="Cadastro" component={RegisterScreen} />
-      <Stack.Screen name="Painel" component={HomeScreen} />
+      <Stack.Screen
+        name="Painel"
+        options={{
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: "#fff",
+          headerTitle: "IESB",
+          headerTitleAlign: "center",
+          headerBackVisible: false,
+          headerRight: () => (
+            <TouchableOpacity>
+              <Icon name="notifications-outline" size={24} color="#fff" />
+            </TouchableOpacity>
+          ),
+        }}
+        component={HomeScreen}
+      />
     </Stack.Navigator>
   );
 }
