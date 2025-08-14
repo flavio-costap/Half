@@ -4,7 +4,7 @@
     "slug": "Meia",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./src/assets/icon.png",
     "scheme": "meia",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,20 +13,30 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./src/assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.anonymous.Meia"
+    },
+    "expo": {
+      "doctor": {
+        "reactNativeDirectoryCheck": {
+          "exclude": [
+            "react-native-vector-icons"
+          ]
+        }
+      }
     },
     "web": {
       "bundler": "metro",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./src/assets/icon.png"
     },
     "plugins": [
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./src/assets/icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
@@ -35,6 +45,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9a40c75d-3dac-4c41-a129-c3f1aa49305c"
+      }
     }
   }
 }

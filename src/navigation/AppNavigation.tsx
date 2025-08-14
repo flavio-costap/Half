@@ -5,6 +5,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
+import StudantCard from "../screens/StudantCard";
 import colors from "../theme/colors";
 
 const Stack = createNativeStackNavigator();
@@ -41,6 +42,19 @@ export default function AppNavigator() {
           ),
         }}
         component={HomeScreen}
+      />
+      <Stack.Screen
+        name="Carteirinha"
+        options={{
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: "#fff",
+          headerTitle: "IESB",
+          headerTitleAlign: "center",
+          headerBackVisible: false,
+        }}
+        component={StudantCard}
       />
     </Stack.Navigator>
   );

@@ -1,3 +1,5 @@
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
 import {
   Dimensions,
@@ -15,12 +17,17 @@ import e3 from "../assets/e3.webp";
 import e4 from "../assets/e4.webp";
 import e5 from "../assets/e5.webp";
 import e6 from "../assets/e6.webp";
+import { RootStackParamList } from "../navigation/types";
 import colors from "../theme/colors";
 
 const { width: screenWidth } = Dimensions.get("window");
-
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Painel"
+>;
 export default function HomeScreen() {
   // const { name, email } = useUserStore((state) => state.user);
+  const navigation = useNavigation<HomeScreenNavigationProp>();
 
   const menuOptions = [
     { id: "1", title: "Carteirinha", icon: "fingerprint" },
@@ -93,13 +100,16 @@ export default function HomeScreen() {
     },
   ];
 
-
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <View style={styles.menuContainer}>
           {menuOptions.map((item) => (
-            <TouchableOpacity key={item.id} style={styles.menuItem}>
+            <TouchableOpacity
+              key={item.id}
+              style={styles.menuItem}
+              onPress={() => navigation.navigate("Carteirinha")}
+            >
               <Icon name={item.icon} size={32} color={colors.primary} />
               <Text style={styles.menuText}>{item.title}</Text>
             </TouchableOpacity>
@@ -110,7 +120,7 @@ export default function HomeScreen() {
       <Text style={styles.sectionTitle}>Últimas notícias</Text>
       <Carousel
         loop
-        width={screenWidth * 0.90}
+        width={screenWidth * 0.9}
         height={135}
         autoPlay
         autoPlayInterval={3000}
@@ -178,33 +188,33 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   newsItem: {
-  flexDirection: "row",
-  alignItems: "center",
-  backgroundColor: "#fff",
-  borderRadius: 10,
-  padding: 10,
-  margin: 10,
-  shadowColor: "#000",
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.1,
-  shadowRadius: 4,
-  elevation: 3,
-},
-newsImage: {
-  width: 80,
-  height: 80,
-  borderRadius: 8,
-  marginRight: 10,
-},
-newsTitle: {
-  fontSize: 14,
-  fontWeight: "500",
-  marginBottom: 4,
-},
-newsDate: {
-  fontSize: 12,
-  color: "#888",
-},
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    padding: 10,
+    margin: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  newsImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 8,
+    marginRight: 10,
+  },
+  newsTitle: {
+    fontSize: 14,
+    fontWeight: "500",
+    marginBottom: 4,
+  },
+  newsDate: {
+    fontSize: 12,
+    color: "#888",
+  },
   carouselImage: {
     width: "100%",
     height: 150,
